@@ -3,8 +3,7 @@ using namespace std;
 #define N 5
 // ccz47798@eveav.com
 int queue[N];
-int front = -1;
-int rear = -1;
+int front = -1 , rear = -1;
 
 int menu(){
     int option;
@@ -20,74 +19,76 @@ int menu(){
     return option;
 }
 
-int isFull(){
+int isEmpty(){
     double status;
-    if(rear == (N-1)){
+    if(front == -1 && rear == -1)
         status = true;
-    }else
+    else
     {
         status = false;
     }
 
     return status;
+}
+
+int isFull(){
+    double status;
+    if((rear+1)%N == front)
+        status = true;
+    else
+        status = false;
+    return status;
+}
+
+int frontRear(){
+    cout << "Front : " << front << " , Raer : " << rear;
+    return 0;
 }
 
 int enqueue(int input){
     if(isFull()){
-        cout << "Queue Is Overflow! No Space To Insert New Element";
+        cout << "Queue Is Overflow!";
         return 0;
-    }else if(rear == -1 && front == -1){
+    }
+    else if(isEmpty()){
         rear = front = 0;
     }
-    else{
-        rear += 1;
+    else
+    {
+        rear = (rear+1)%N;
     }
     queue[rear] = input;
+    frontRear();
     return 0;
 }
-
-int isEmpty(){
-    double status;
-    if(front == -1 && rear == -1){
-        status = true;
-    }else
-    {
-        status = false;
-    }
-
-    return status;
-}
-
 int dequeue(){
-    if(isEmpty())
-        cout << "Stack Is Underflow! Nothing To dequeue. " << front << ",  " << rear;
-    else if(front == rear){
+    if(isEmpty()){
+        cout << "Queue Is Underflow!";
+    }else if(front == rear){
         front = rear = -1;
-    }else{
-        // queue[front] = 0;
-        front += 1;
-            
     }
+    else
+    {
+        queue[front] = 0;
+        front = (front+1)%N;
+    }
+    frontRear();
     return 0;
 }
 
 int peek(int index){
-    if(isEmpty()){
-        cout << "Stack Is Underflow! Nothing To Peek.";
-    }else{
-        cout << "Element Value: " << queue[index];
-    }
     return 0;
 }
 
 int display(){
-    if(rear == -1 && front == -1){
+    if(isEmpty()){
         cout << "Queue Is Underflow! Nothing To Display.";
     }else{
-        for(int i = front; i <= rear; i++){
+        for(int i = 0; i < N; i++){
             cout << queue[i] << ", ";
         }
     }
+    frontRear();
     return 0;
 }
 
@@ -119,4 +120,5 @@ int main(){
     }
     main();
     return 0;
+
 }
