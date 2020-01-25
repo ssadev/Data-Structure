@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 typedef struct node{
     int data;
     struct node * next;
@@ -17,7 +16,8 @@ node *createList(){
     return head;
 }
 
-int displayList(node *q){
+int displayList(){
+    q = head;
     while (q!=NULL)
     {
         printf("%d -> ", q->data);
@@ -38,28 +38,53 @@ node *insertNodeAtBeginning(){
     return q;
 }
 
+node *insertNodeAtEnd(){
+    q = (node*)malloc(sizeof(node));
+    printf("Enter Value Of New Node: ");
+    scanf("%d", &q->data);
+    q->next = NULL;
+
+
+    return q;
+}
+
 int menu(){
-    char operation;
-    printf("Select The Next Operation(d->display, i-> for Insertion q-> for Quit): ");
-    scanf(" %c", &operation);
+    int operation;
+    printf("######## Select The Next Operation ########\n1-> display\n2-> for Insertion From Head \n3-> for Quit \n4-> for Insertion From Tail\n: ");
+    scanf(" %d", &operation);
     
     switch (operation)
     {
-    case 'd':
-        displayList(p);
+    case 1:
+        displayList();
+
+        printf("\n");
         menu();
         break;
-    case 'i':
+    case 2:
         head = insertNodeAtBeginning();
-        p = head;
-        p->next = head->next;
+        // p = head;
+        // p->next = head->next;
         // printf("%d", p);
+        printf("\n");
         menu();
         break;
-    case 'q':
+    case 3:
         return 0;
+        break;
+    case 4:
+        p->next = insertNodeAtEnd();
+        p = p->next;
+        p->next = NULL;
+
+        printf("\n");
+        menu();
+        break;
     default:
         printf("Invalid Input");
+
+        printf("\n");
+        menu();
         break;
     }
     return 0;
@@ -75,6 +100,8 @@ int main(){
     p = head;
     printf("Node Initialization Compleat.");
     menu();
+
+
     
     
     printf("\n");
