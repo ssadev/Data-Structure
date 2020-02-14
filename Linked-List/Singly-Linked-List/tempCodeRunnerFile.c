@@ -1,0 +1,2 @@
+
+        last = head;

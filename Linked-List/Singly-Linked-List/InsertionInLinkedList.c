@@ -100,9 +100,6 @@ int main(){
     p = head;
     printf("Node Initialization Compleat.");
     menu();
-
-
-    
     
     printf("\n");
     return 0;
