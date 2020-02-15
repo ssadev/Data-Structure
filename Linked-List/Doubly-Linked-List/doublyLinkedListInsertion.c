@@ -27,6 +27,7 @@ void insertAtBeginning(int d){
     
     
 }
+
 int listLen(){
     int len = 0;
     p = head;
@@ -38,6 +39,7 @@ int listLen(){
     
     return len;
 }
+
 void insertAtNPosition(int d, int posi){
     q = (node*)malloc(sizeof(node));
     q->data = d;
@@ -63,13 +65,14 @@ void insertAtNPosition(int d, int posi){
 
             q->next = p->next;
             p->next = q;
-            q->prev = p;            
+            q->prev = p;
         }
         
     
     }
     
 }
+
 void insertAtEnd(int d){
     q = (node*)malloc(sizeof(node));
     q->data = d;
