@@ -7,6 +7,20 @@ typedef struct node{
 }node;
 
 node *head, *tail, *p, *q;
+
+void display(){
+  if(head == NULL){
+    printf("List Is Empty");
+  }else{
+    p = head;
+    do{
+      printf("%d -> ", p->data);
+      p = p->next;
+    }while(p != head);
+    printf("NULL"); 
+  }
+}
+
 int countList(){
   p = head;
   int len = 0;
@@ -73,31 +87,87 @@ void insertAtEnd(int item){
   tail = q;
 }
 
-void display(){
-	p = head;
-	do{
-		printf("%d -> ", p->data);
-		p = p->next;
-	}while(p != head);
-	printf("NULL");
+void makeALinkedList(int num){
+  int i;
+  for(i=1; i<=num; i++){
+    insertAtEnd(i);
+  }
 }
+
+void deleteFromBeginning(){
+  node * temp;
+  temp = head->next;
+  tail->next = head->next;
+  free(head);
+  head = temp;
+}
+
+void deleteFromNPosition(int posi){
+  if(posi >= countList()){
+    printf("List Range Out Of Position\n");
+  }else{
+    p = head;
+    int i;
+    --posi;
+    for(i = 1; i<posi; i++){
+      p = p->next;
+    }
+    // printf("==========> %d", p->data);
+    node * temp = p->next;
+    free(p->next);
+    p->next = temp->next;
+  }
+
+}
+
+void deleteFromEnd(){
+  if(head->data == 0){
+    printf("List Is Already Empty");
+  }else
+  {
+    p = head;
+    int i;
+    int lastNodeIndex = countList();
+    --lastNodeIndex;
+    for(i = 1; i<lastNodeIndex; i++){
+      p = p->next;
+    }
+    // node *temp = p;
+    p->next = tail->next;
+    free(tail);
+    tail = p;
+
+  }
+ 
+}
+
+
 
 int main(){
 	head = NULL;
 	tail = head;
-	insertAtEnd(1);
-	insertAtEnd(2);
-	insertAtEnd(3);
-  // insertAtBeginning(1);
-  insertAtBeginning(0);
+
+  // Creating a linked list of length 5
+  makeALinkedList(7);
   display();
-	printf("\n");
-  insertAtNPosition(3, 33);
+  printf("\n");
+  // linked list created
+
+  // deleteFromBeginning();
+  deleteFromBeginning();
   display();
-	printf("\n");
-  insertAtNPosition(13, 33);
+  printf("\n");
+
+  deleteFromEnd();
+  // deleteFromEnd();
   display();
-	printf("\n");
-  // printf("List Length: %d", countList());
+  printf("\n");
+
+    // deleteFromBeginning();
+  deleteFromNPosition(2);
+  display();
+  printf("\n");
+
+  printf("\n");
 	return 0;
 }
