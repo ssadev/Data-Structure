@@ -1,4 +1,4 @@
-# data-structures
+# Data Structures
 
 ```
 Run This Codes in Online :
