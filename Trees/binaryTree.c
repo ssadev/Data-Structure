@@ -1,16 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 typedef struct node{
     int data;
     struct node * left;
     struct node * right;
 }node;
 
-node *root, *q;
+node *root;
 
 node *createNewNode(int item){
+    node *q;
     q = (node*)malloc(sizeof(node));
     q->data = item;
     q->left = q->right = NULL;
