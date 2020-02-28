@@ -44,17 +44,22 @@ int main(){
     int item;
     root = NULL;
     root = Insert(root, 20);
+    // printf("\nRoot => Location: %d, Value: %d ", &root, root->data);
     root = Insert(root, 15);
     root = Insert(root, 25);
-
-    printf("Search Item: ");
-    scanf("%d", &item);
-    if (search(root, item) == 1)
+    // printf("\nRoot => Location: %d, Value: %d ", &root, root->data);
+    while (1)
     {
-        printf("Item Is Available");
-    }else
-    {
-        printf("Item Is Not Available!");
+        printf("Search Item: ");
+        scanf("%d", &item);
+        if (search(root, item) == 1)
+        {
+            printf("Item Is Available ✅");
+        }else
+        {
+            printf("Item Is Not Available ❎");
+        }
+        printf("\n");
     }
     
     

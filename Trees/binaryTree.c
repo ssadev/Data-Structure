@@ -10,30 +10,52 @@ typedef struct node{
 
 node *root, *q;
 
-void getNewNode(int item){
+node *createNewNode(int item){
     q = (node*)malloc(sizeof(node));
     q->data = item;
     q->left = q->right = NULL;
-    root = q;
+    return q;
 }
-void Insert(node *posi, int item){
-    q = (node*)malloc(sizeof(node));
-    q->data = item;
-    if(root == NULL){
-        root = q;
-        q->left = q->right = NULL;
-    }else if (item <= root->data)
+node *Insert(node *ptn, int item){
+    if(ptn == NULL){
+        ptn = createNewNode(item);
+    }else if (item <= ptn->data)
     {
-        root->left = Insert(root->left, item);
+        ptn->left = Insert(ptn->left, item);
+    }else{
+        ptn->right = Insert(ptn->right, item);
     }
+    return ptn;
     
+}
+
+int search(node *ptn, int item){
+    int status;
+    if(ptn == NULL)
+        status = 0;
+    else if(item == ptn->data)
+        status = 1;
+    else if(item <= ptn->data)
+        status = search(ptn->left, item);
+    else
+        status = search(ptn->right, item);
+    return status;
 }
 
 int main(){
     root = NULL;
-    Insert(root, 20);
+    root = Insert(root, 20);
+    root = Insert(root, 12);
+    root = Insert(root, 25);
 
-
+    int searchData;
+    printf("Search Data: ");
+    scanf("%d", &searchData);
+    if(search(root, searchData)){
+        printf("Search Result Founded");
+    }else{
+        printf("Search Result: 0");
+    }
     printf("\n");
     return 0;
 }
