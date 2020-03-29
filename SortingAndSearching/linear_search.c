@@ -10,19 +10,19 @@ int main(){
         scanf("%d", &a[i]);
     }
 
-    printf("\n");
-    for(i=0; i<n; i++)
-        printf("%d, ", a[i]);
+    // printf("\n");
+    // for(i=0; i<n; i++)
+    //     printf("%d, ", a[i]);
 
     printf("\nSearch Value: ");
     scanf("%d", &val);
     for(i=0; i<n; i++){
         if(a[i]==val){
-            printf("Search Result: a[%d] = %d", i, a[i]);
+            printf("Search Result: a[%d] = %d\n", i, a[i]);
             return 0;
         }
         if(i == (n-1)){
-            printf("Search Result Not Found");
+            printf("Search Result Not Found\n");
         }
     }
     return 0;

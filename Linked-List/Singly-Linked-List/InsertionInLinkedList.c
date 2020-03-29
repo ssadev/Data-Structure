@@ -1,14 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
-typedef struct node{
+// https://us04web.zoom.us/j/788802941?pwd=WDBINHVhczFCVUlqZmRXbnFwNFpZZz09
+
+typedef struct node
+{
     int data;
-    struct node * next;
-}node;
+    struct node *next;
+} node;
 
 node *q, *head, *p;
 
-node *createList(){
-    q = (node*)malloc(sizeof(node));
+node *createList()
+{
+    q = (node *)malloc(sizeof(node));
     printf("Enter The Value Of Head Node: ");
     scanf("%d", &q->data);
     q->next = NULL;
@@ -16,21 +20,23 @@ node *createList(){
     return head;
 }
 
-int displayList(){
+int displayList()
+{
     q = head;
-    while (q!=NULL)
+    while (q != NULL)
     {
         printf("%d -> ", q->data);
         q = q->next;
     }
     printf("NULL");
     printf("\n");
-    
+
     return 0;
 }
 
-node *insertNodeAtBeginning(){
-    q = (node*)malloc(sizeof(node));
+node *insertNodeAtBeginning()
+{
+    q = (node *)malloc(sizeof(node));
     printf("Enter Value Of New Node: ");
     scanf("%d", &q->data);
     q->next = head;
@@ -38,21 +44,22 @@ node *insertNodeAtBeginning(){
     return q;
 }
 
-node *insertNodeAtEnd(){
-    q = (node*)malloc(sizeof(node));
+node *insertNodeAtEnd()
+{
+    q = (node *)malloc(sizeof(node));
     printf("Enter Value Of New Node: ");
     scanf("%d", &q->data);
     q->next = NULL;
 
-
     return q;
 }
 
-int menu(){
+int menu()
+{
     int operation;
     printf("######## Select The Next Operation ########\n1-> display\n2-> for Insertion From Head \n3-> for Quit \n4-> for Insertion From Tail\n: ");
     scanf(" %d", &operation);
-    
+
     switch (operation)
     {
     case 1:
@@ -90,7 +97,8 @@ int menu(){
     return 0;
 }
 
-int main(){
+int main()
+{
     int n, val;
     // node *q, *head;
     // createList(val);
@@ -100,7 +108,7 @@ int main(){
     p = head;
     printf("Node Initialization Compleat.");
     menu();
-    
+
     printf("\n");
     return 0;
 }

@@ -6,7 +6,7 @@ int main(){
     printf("Enter Array len: ");
     scanf("%d", &n);
     for(i=0; i<n; i++){
-        printf("Enter Value For a[%d](greater than a[%d]): ", i, i-1);
+        printf("Enter Element Value: ");
         scanf("%d", &a[i]);
     }
 
@@ -24,7 +24,7 @@ int main(){
     while(left<=right){
     	mid = (left+right)/2;
     	if(a[mid] == val){
-    		printf("Search Result:\nValue: %d\n", a[mid]);
+    		printf("Search Result Value: %d\n", a[mid]);
     		return 0;
 		}else if(val > a[mid]){
 			left = mid+1;

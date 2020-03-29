@@ -2,9 +2,9 @@
 #include <stdlib.h>
 
 typedef struct node{
-    struct node * prev;
+    struct node *prev;
     int data;
-    struct node * next;
+    struct node *next;
 }node;
 
 node *p, *q, *head = NULL, *tail;
